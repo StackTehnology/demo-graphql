@@ -2,9 +2,13 @@ import { FC } from "react";
 import { useLaunchProfileQuery } from "../../generated/graphql";
 import LaunchProfile from "./LaunchProfle";
 
-const LaunchProfileContainer: FC = () => {
+interface OwnProps {
+  id: number;
+}
+
+const LaunchProfileContainer: FC<OwnProps> = ({ id }) => {
   const { data, error, loading } = useLaunchProfileQuery({
-    variables: { id: "42" },
+    variables: { id: String(id) },
   });
 
   if (loading) {
